@@ -20,9 +20,19 @@ export const useMovies = (endpoint = TMDB_CONFIG.endpoints.popular) => {
     setIsLoading(true);
     setError(null);
     try {
+      // Check if API key exists
+      if (!import.meta.env.VITE_TMDB_API_KEY) {
+        throw new Error(
+          'TMDB API Key is missing! Please set VITE_TMDB_API_KEY in your environment variables.'
+        );
+      }
+
       const response = await fetch(endpoint);
       
       if (!response.ok) {
+        if (response.status === 401) {
+          throw new Error('Invalid or expired TMDB API key. Please check your credentials.');
+        }
         throw new Error(`API Error: ${response.status} ${response.statusText}`);
       }
 
@@ -35,11 +45,11 @@ export const useMovies = (endpoint = TMDB_CONFIG.endpoints.popular) => {
         );
         setMovies(filteredMovies);
       } else {
-        throw new Error('Invalid API response format');
+        throw new Error('Invalid API response format. Check your API key.');
       }
     } catch (err) {
       console.error('Error fetching movies:', err);
-      setError(err.message || 'Failed to load movies');
+      setError(err.message || 'Failed to load movies. Please try again.');
       setMovies([]);
     } finally {
       setIsLoading(false);

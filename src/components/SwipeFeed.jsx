@@ -84,18 +84,24 @@ export const SwipeFeed = ({ endpoint = TMDB_CONFIG.endpoints.popular }) => {
   // Show error state
   if (error) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-slate-900 to-slate-800">
-        <div className="text-center">
-          <p className="text-red-400 text-xl font-semibold mb-4">
-            ⚠️ Unable to load movies
+      <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-black">
+        <div className="text-center px-6 max-w-md">
+          <p className="text-5xl mb-4">⚠️</p>
+          <p className="text-red-400 text-2xl font-bold mb-4">
+            Unable to Load Movies
           </p>
-          <p className="text-gray-300 mb-6">{error}</p>
-          <button
-            onClick={() => window.location.reload()}
-            className="px-6 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg font-medium transition"
-          >
-            Retry
-          </button>
+          <p className="text-gray-300 mb-8 leading-relaxed">{error}</p>
+          <div className="space-y-3">
+            <button
+              onClick={() => window.location.reload()}
+              className="w-full px-6 py-3 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white rounded-lg font-bold transition transform hover:scale-105"
+            >
+              🔄 Retry
+            </button>
+            <p className="text-gray-400 text-xs mt-4">
+              <strong>💡 Tip:</strong> If you're on Vercel, ensure VITE_TMDB_API_KEY is set in Environment Variables
+            </p>
+          </div>
         </div>
       </div>
     );
