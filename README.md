@@ -5,10 +5,13 @@ A modern, swipeable movie discovery web app built with **React**, **Tailwind CSS
 ![React](https://img.shields.io/badge/React-18-blue?logo=react)
 ![Vite](https://img.shields.io/badge/Vite-5-purple?logo=vite)
 ![Tailwind](https://img.shields.io/badge/Tailwind%20CSS-3-teal?logo=tailwindcss)
-![Framer Motion](https://img.shields.io/badge/Framer%20Motion-10-pink)
+
+
+
 
 ---
-
+## Live:
+https://movie-matcher-lva0mg8db-aryanv0806-ops-projects.vercel.app/
 ## ✨ Features
 
 ✅ **Real-time TMDB API Integration** - Fetch live movie data (Popular, Top Rated, Upcoming)
